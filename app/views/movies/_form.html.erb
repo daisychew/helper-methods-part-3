@@ -1,12 +1,8 @@
-<h1>New movie</h1>
-
-<%= render partial: "movies/form", locals: { movie: @movie } %>
-
-<% @movie.errors.full_messages.each do |message| %>
+<% movie.errors.full_messages.each do |message| %>
   <p style="color: red;"><%= message %></p>
 <% end %>
 
-<%= form_with(model: @movie, data: { turbo: :false }) do |form| %>
+<%= form_with(model: movie, data: { turbo: :false }) do |form| %>
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -19,9 +15,15 @@
 
   <div>
     <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div>
+    <%= form.label :released_on %>
+    <%= form.date_select :released_on %>
+  </div>
 
   <div>
     <%= form.submit %>
-    <%= form.text_area :description %>
   </div>
 <% end %>
